@@ -1,4 +1,4 @@
-# Event replaying
+# State replaying
 It's an action of applying changes (events) to the entity in order to reconstruct its state.
 This mechanism seems to ideally fit for need of synchronisation state with multiple clients.
 In order to do that server just have to send events to the clients. 
