@@ -18,7 +18,13 @@ Required for:
     - gather information to balance the game play
     - analyzing behaviour of users in order to check how and how often given parts of systems are used
     - possibility to add new types of state that could be calculated from already happened events.
-    
+ 
+## Way of thinking
+
+#### [State Replaying](docs/state-replaying.md)
+In order to synchronise the state with multiple client it would be useful 
+to have ability to replay events on the client state in order to update it.
+
 ## Inspirations:
 - [Implementing Domain-Driven Design](https://vaughnvernon.co/?page_id=168#iddd)
 - [Event Sourcing vs Command Sourcing](http://thinkbeforecoding.com/post/2013/07/28/Event-Sourcing-vs-Command-Sourcing)
