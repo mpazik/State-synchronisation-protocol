@@ -19,11 +19,11 @@ Required for:
     - analyzing behaviour of users in order to check how and how often given parts of systems are used
     - possibility to add new types of state that could be calculated from already happened events.
  
-## Way of thinking
+## Pages
 
-#### [State Replaying](docs/state-replaying.md)
-In order to synchronise the state with multiple client it would be useful 
-to have ability to replay events on the client state in order to update it.
+- [State Replaying](docs/state-replaying.md)
+- [Entity](docs/entity.md)
+
 
 ## Inspirations:
 - [Implementing Domain-Driven Design](https://vaughnvernon.co/?page_id=168#iddd)
