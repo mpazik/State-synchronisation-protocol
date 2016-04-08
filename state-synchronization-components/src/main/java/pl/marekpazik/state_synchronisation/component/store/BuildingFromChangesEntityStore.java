@@ -12,11 +12,11 @@ import pl.marekpazik.state_synchronisation.entity.EntityStore;
  * Entity store that base on {@link Changes}. All saved changes are saved in the {@link ChangesStore}.
  * @see ChangesStore#saveChange(Entity.Id, Change) ChangesStore#saveChange
  */
-public final class BuildingFromScratchEntityStore implements EntityStore {
+public final class BuildingFromChangesEntityStore implements EntityStore {
     private final EntityFactoryRegistry entityFactoryRegistry;
     private final ChangesStore changesStore;
 
-    public BuildingFromScratchEntityStore(EntityFactoryRegistry entityFactoryRegistry, ChangesStore changesStore) {
+    public BuildingFromChangesEntityStore(EntityFactoryRegistry entityFactoryRegistry, ChangesStore changesStore) {
         this.entityFactoryRegistry = entityFactoryRegistry;
         this.changesStore = changesStore;
     }

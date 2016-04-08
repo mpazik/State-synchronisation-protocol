@@ -20,7 +20,7 @@ public class BuildingFromScratchEntityStoreTest extends EntityStoreTest<GameChar
 
     @Override
     protected EntityStore createSut() {
-        return new BuildingFromScratchEntityStore(entityFactoryRegistry, changesStore);
+        return new BuildingFromChangesEntityStore(entityFactoryRegistry, changesStore);
     }
 
     @Override
