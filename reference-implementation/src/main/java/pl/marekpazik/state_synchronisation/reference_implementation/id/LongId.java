@@ -4,7 +4,7 @@ import pl.marekpazik.state_synchronisation.entity.Entity;
 
 import java.util.Objects;
 
-public class LongId<T> implements Entity.Id<T> {
+public class LongId<T extends Entity<T>> implements Entity.Id<T> {
     private final long id;
 
     public LongId(long id) {

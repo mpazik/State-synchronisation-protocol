@@ -27,13 +27,13 @@ public interface Entity<T extends Entity<T>> {
      */
     Properties<T> getProperties();
 
-    interface Id<T> {
+    interface Id<T extends Entity<T>> {
     }
 
-    interface State<T> {
+    interface State<T extends Entity<T>> {
     }
 
-    interface Properties<T> {
+    interface Properties<T extends Entity<T>> {
     }
 
 }

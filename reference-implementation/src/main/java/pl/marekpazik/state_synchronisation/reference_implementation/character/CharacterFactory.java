@@ -6,7 +6,7 @@ import pl.marekpazik.state_synchronisation.entity.Entity;
 import pl.marekpazik.state_synchronisation.entity.EntityFactory;
 import pl.marekpazik.state_synchronisation.reference_implementation.id.LongIdGenerator;
 
-public class CharacterFactory implements EntityFactory<Character> {
+public class CharacterFactory implements EntityFactory<GameCharacter> {
     private final LongIdGenerator longIdGenerator;
 
     public CharacterFactory(LongIdGenerator longIdGenerator) {
@@ -14,13 +14,13 @@ public class CharacterFactory implements EntityFactory<Character> {
     }
 
     @Override
-    public Character createEntity(CreationChange<Character> creationChange) {
+    public GameCharacter createEntity(CreationChange<GameCharacter> creationChange) {
         assert creationChange instanceof CharacterCreated;
         CharacterCreated characterCreated = (CharacterCreated) creationChange;
 
-        Entity.Id<Character> id = longIdGenerator.<Character>generateId();
-        Character.CharacterProperties properties = new Character.CharacterProperties(characterCreated.name, characterCreated.type);
-        Character.CharacterState state = new Character.CharacterState(characterCreated.position);
-        return new Character(id, Version.first(), properties, state);
+        Entity.Id<GameCharacter> id = longIdGenerator.<GameCharacter>generateId();
+        CharacterProperties properties = new CharacterProperties(characterCreated.name, characterCreated.type);
+        CharacterState state = new CharacterState(characterCreated.position);
+        return new GameCharacter(id, Version.first(), properties, state);
     }
 }
