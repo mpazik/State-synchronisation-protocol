@@ -25,7 +25,7 @@ public class InMemoryChangesStoreTest extends ChangesStoreTest<GameCharacter> {
 
     @Override
     protected CharacterCreated getCreationChange() {
-        return new CharacterCreated("Roman", GameCharacter.CharacterType.Player, new Position(1, 1));
+        return new CharacterCreated("Roman", GameCharacter.GameCharacterType.Player, new Position(1, 1));
     }
 
     @Override

@@ -10,11 +10,11 @@ public final class WorldObjectCreated extends WordUpdateChange {
     }
 
     @Override
-    public WorldState calculateNewState(WorldProperties properties, WorldState state) {
+    public World.State calculateNewState(World.Properties properties, World.State state) {
         ImmutableSet<WorldObject> worldObjects = ImmutableSet.<WorldObject>builder()
                 .addAll(state.worldObjects)
                 .add(worldObject)
                 .build();
-        return new WorldState(worldObjects);
+        return new World.State(worldObjects);
     }
 }

@@ -5,8 +5,8 @@ import pl.marekpazik.state_synchronisation.common.Id;
 
 public abstract class AbstractEntity<
         E extends Entity<E>,
-        P extends Entity.Properties<E>,
-        S extends Entity.State<E>
+        P extends EntityProperties<E>,
+        S extends EntityState<E>
         > implements Entity<E> {
     private final Id<E> id;
     private final P properties;

@@ -10,22 +10,16 @@ public interface Entity<E extends Entity<E>> {
     /**
      * @return and immutable state of the entity
      */
-    State<E> getState();
+    EntityState<E> getState();
+
+    /**
+     * @return immutable entity properties.
+     */
+    EntityProperties<E> getProperties();
 
     /**
      * @return the version of the entity sate.
      */
     Version getVersion();
-
-    /**
-     * @return immutable entity properties.
-     */
-    Properties<E> getProperties();
-
-    interface State<E extends Entity<E>> {
-    }
-
-    interface Properties<E extends Entity<E>> {
-    }
 
 }

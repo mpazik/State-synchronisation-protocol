@@ -6,8 +6,8 @@ package pl.marekpazik.state_synchronisation.entity;
  */
 
 public abstract class AbstractUpdateChange<T extends AbstractEntity<T, P, S>,
-        P extends Entity.Properties<T>,
-        S extends Entity.State<T>
+        P extends EntityProperties<T>,
+        S extends EntityState<T>
         > implements UpdateChange<T> {
 
     @Override
