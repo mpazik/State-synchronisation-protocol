@@ -3,16 +3,16 @@ package pl.marekpazik.state_synchronisation.entity;
 import pl.marekpazik.state_synchronisation.Version;
 
 public abstract class AbstractEntity<
-        T extends Entity<T>,
-        P extends Entity.Properties<T>,
-        S extends Entity.State<T>
-        > implements Entity<T> {
-    private final Id<T> id;
+        E extends Entity<E>,
+        P extends Entity.Properties<E>,
+        S extends Entity.State<E>
+        > implements Entity<E> {
+    private final Id<E> id;
     private final P properties;
     private Version version;
     private S state;
 
-    public AbstractEntity(Id<T> id, P properties, S state) {
+    public AbstractEntity(Id<E> id, P properties, S state) {
         this.id = id;
         this.version = Version.first();
         this.properties = properties;
@@ -20,7 +20,7 @@ public abstract class AbstractEntity<
     }
 
     @Override
-    public Id<T> getId() {
+    public Id<E> getId() {
         return id;
     }
 

@@ -2,14 +2,14 @@ package pl.marekpazik.state_synchronisation.entity;
 
 import pl.marekpazik.state_synchronisation.Version;
 
-public interface Entity<T extends Entity<T>> {
+public interface Entity<E extends Entity<E>> {
 
-    Id<T> getId();
+    Id<E> getId();
 
     /**
      * @return and immutable state of the entity
      */
-    State<T> getState();
+    State<E> getState();
 
     /**
      * @return the version of the entity sate.
@@ -19,15 +19,15 @@ public interface Entity<T extends Entity<T>> {
     /**
      * @return immutable entity properties.
      */
-    Properties<T> getProperties();
+    Properties<E> getProperties();
 
-    interface Id<T extends Entity<T>> {
+    interface Id<E extends Entity<E>> {
     }
 
-    interface State<T extends Entity<T>> {
+    interface State<E extends Entity<E>> {
     }
 
-    interface Properties<T extends Entity<T>> {
+    interface Properties<E extends Entity<E>> {
     }
 
 }

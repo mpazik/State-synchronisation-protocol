@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
 
-public abstract class EntityStoreTest<T extends Entity<T>> {
+public abstract class EntityStoreTest<E extends Entity<E>> {
     EntityStore entityStore;
 
     @Before
@@ -16,11 +16,11 @@ public abstract class EntityStoreTest<T extends Entity<T>> {
 
     @Test
     public void getEntity_ifExists_returnsIt() {
-        Entity.Id<T> id = generateId();
-        CreationChange<T> creationChange = getCreationChange();
+        Entity.Id<E> id = generateId();
+        CreationChange<E> creationChange = getCreationChange();
         entityStore.saveChange(id, creationChange);
 
-        T entity = entityStore.getEntity(id);
+        E entity = entityStore.getEntity(id);
 
         assertThat(entity).isNotNull();
     }
@@ -35,8 +35,8 @@ public abstract class EntityStoreTest<T extends Entity<T>> {
 
     protected abstract EntityStore createSut();
 
-    protected abstract Entity.Id<T> generateId();
+    protected abstract Entity.Id<E> generateId();
 
-    protected abstract CreationChange<T> getCreationChange();
+    protected abstract CreationChange<E> getCreationChange();
 
 }

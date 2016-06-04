@@ -11,27 +11,27 @@ import java.util.stream.Collectors;
 /**
  * Entity changes since it creation. It guarantees that the first change is a {@link CreationChange}.
  */
-public final class Changes<T extends Entity<T>> {
-    private final CreationChange<T> creationChange;
-    private final List<UpdateChange<T>> changes;
+public final class Changes<E extends Entity<E>> {
+    private final CreationChange<E> creationChange;
+    private final List<UpdateChange<E>> changes;
 
-    public Changes(List<Change<T>> changes) {
+    public Changes(List<Change<E>> changes) {
         assert changes.size() > 0;
         assert changes.get(0) instanceof CreationChange;
-        creationChange = (CreationChange<T>) changes.get(0);
-        this.changes = changes.stream().skip(1).map(change -> (UpdateChange<T>) change).collect(Collectors.toList());
+        creationChange = (CreationChange<E>) changes.get(0);
+        this.changes = changes.stream().skip(1).map(change -> (UpdateChange<E>) change).collect(Collectors.toList());
     }
 
-    public CreationChange<T> getCreationChange() {
+    public CreationChange<E> getCreationChange() {
         return creationChange;
     }
 
-    public List<UpdateChange<T>> getUpdateChanges() {
+    public List<UpdateChange<E>> getUpdateChanges() {
         return changes;
     }
 
-    public List<Change<T>> getAsList() {
-        return ImmutableList.<Change<T>>builder().add(creationChange).addAll(changes).build();
+    public List<Change<E>> getAsList() {
+        return ImmutableList.<Change<E>>builder().add(creationChange).addAll(changes).build();
     }
 
     @Override

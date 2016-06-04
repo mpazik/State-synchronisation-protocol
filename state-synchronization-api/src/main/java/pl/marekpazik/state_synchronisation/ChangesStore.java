@@ -6,10 +6,10 @@ import pl.marekpazik.state_synchronisation.entity.Entity.Id;
 
 public interface ChangesStore {
 
-    <T extends Entity<T>> Changes<T> getAllChanges(Id<T> id);
+    <E extends Entity<E>> Changes<E> getAllChanges(Id<E> id);
 
     /**
      * All changes have to be saved to this store.
      */
-    <T extends Entity<T>> void saveChange(Id<T> id, Change<T> change);
+    <E extends Entity<E>> void saveChange(Id<E> id, Change<E> change);
 }

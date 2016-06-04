@@ -13,7 +13,7 @@ public interface EntityStore {
      * Store assumes that for each id object there is corresponding entity.
      * @throws RuntimeException if there is no entity for the given id.
      */
-    <T extends Entity<T>> T getEntity(Id<T> id);
+    <E extends Entity<E>> E getEntity(Id<E> id);
 
-    <T extends Entity<T>> void saveChange(Id<T> id, Change<T> change);
+    <E extends Entity<E>> void saveChange(Id<E> id, Change<E> change);
 }

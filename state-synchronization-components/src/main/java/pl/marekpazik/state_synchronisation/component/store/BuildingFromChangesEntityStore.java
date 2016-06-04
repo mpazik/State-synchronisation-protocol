@@ -18,15 +18,15 @@ public final class BuildingFromChangesEntityStore implements EntityStore {
     }
 
     @Override
-    public <T extends Entity<T>> T getEntity(Entity.Id<T> id) {
-        Changes<T> changes = changesStore.getAllChanges(id);
-        T entity = changes.getCreationChange().createEntity(id);
+    public <E extends Entity<E>> E getEntity(Entity.Id<E> id) {
+        Changes<E> changes = changesStore.getAllChanges(id);
+        E entity = changes.getCreationChange().createEntity(id);
         changes.getUpdateChanges().forEach(change -> change.updateEntityState(entity));
         return entity;
     }
 
     @Override
-    public <T extends Entity<T>> void saveChange(Entity.Id<T> id, Change<T> change) {
+    public <E extends Entity<E>> void saveChange(Entity.Id<E> id, Change<E> change) {
         changesStore.saveChange(id, change);
     }
 }

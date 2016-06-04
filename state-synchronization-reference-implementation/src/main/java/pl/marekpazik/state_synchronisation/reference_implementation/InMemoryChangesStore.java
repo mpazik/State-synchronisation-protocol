@@ -16,14 +16,14 @@ public class InMemoryChangesStore implements ChangesStore {
     Map<Entity.Id<?>, List<Change<?>>> changes = new HashMap<>();
 
     @Override
-    public <T extends Entity<T>> Changes<T> getAllChanges(Entity.Id<T> id) {
+    public <E extends Entity<E>> Changes<E> getAllChanges(Entity.Id<E> id) {
         //noinspection unchecked
-        Stream<Change<T>> changeStream = changes.get(id).stream().map(change -> (Change<T>) change);
+        Stream<Change<E>> changeStream = changes.get(id).stream().map(change -> (Change<E>) change);
         return new Changes<>(ImmutableList.copyOf(changeStream.iterator()));
     }
 
     @Override
-    public <T extends Entity<T>> void saveChange(Entity.Id<T> id, Change<T> change) {
+    public <E extends Entity<E>> void saveChange(Entity.Id<E> id, Change<E> change) {
         if (changes.containsKey(id)) {
             changes.get(id).add(change);
         } else {

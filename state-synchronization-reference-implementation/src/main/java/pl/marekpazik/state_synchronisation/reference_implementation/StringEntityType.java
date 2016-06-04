@@ -5,7 +5,7 @@ import pl.marekpazik.state_synchronisation.entity.EntityType;
 
 import java.util.Objects;
 
-public class StringEntityType<T extends Entity<T>> implements EntityType<T> {
+public class StringEntityType<E extends Entity<E>> implements EntityType<E> {
     private final String type;
 
     public StringEntityType(String type) {

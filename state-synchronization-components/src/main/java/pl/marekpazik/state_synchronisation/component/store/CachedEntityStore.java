@@ -18,21 +18,21 @@ public final class CachedEntityStore implements EntityStore {
     }
 
     @Override
-    public <T extends Entity<T>> T getEntity(Entity.Id<T> id) {
+    public <E extends Entity<E>> E getEntity(Entity.Id<E> id) {
         try {
             //noinspection unchecked
-            return (T) cache.get(id, () -> entityStore.getEntity(id));
+            return (E) cache.get(id, () -> entityStore.getEntity(id));
         } catch (ExecutionException e) {
             throw new RuntimeException(e);
         }
     }
 
     @Override
-    public <T extends Entity<T>> void saveChange(Entity.Id<T> id, Change<T> change) {
+    public <E extends Entity<E>> void saveChange(Entity.Id<E> id, Change<E> change) {
         //noinspection unchecked
-        T entity = (T) cache.getIfPresent(id);
+        E entity = (E) cache.getIfPresent(id);
         if (entity != null && change instanceof UpdateChange) {
-            ((UpdateChange<T>) change).updateEntityState(entity);
+            ((UpdateChange<E>) change).updateEntityState(entity);
         }
         entityStore.saveChange(id, change);
     }
