@@ -12,9 +12,9 @@ public abstract class AbstractEntity<
     private Version version;
     private S state;
 
-    public AbstractEntity(Id<T> id, Version version, P properties, S state) {
+    public AbstractEntity(Id<T> id, P properties, S state) {
         this.id = id;
-        this.version = version;
+        this.version = Version.first();
         this.properties = properties;
         this.state = state;
     }
@@ -29,7 +29,7 @@ public abstract class AbstractEntity<
         return state;
     }
 
-    protected void updateState(S newState) {
+    public void updateState(S newState) {
         state = newState;
         version = version.next();
     }

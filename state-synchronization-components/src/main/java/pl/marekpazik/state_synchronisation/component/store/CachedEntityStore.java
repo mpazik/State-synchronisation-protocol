@@ -4,6 +4,7 @@ import com.google.common.cache.Cache;
 import pl.marekpazik.state_synchronisation.Change;
 import pl.marekpazik.state_synchronisation.entity.Entity;
 import pl.marekpazik.state_synchronisation.entity.EntityStore;
+import pl.marekpazik.state_synchronisation.entity.UpdateChange;
 
 import java.util.concurrent.ExecutionException;
 
@@ -30,8 +31,8 @@ public final class CachedEntityStore implements EntityStore {
     public <T extends Entity<T>> void saveChange(Entity.Id<T> id, Change<T> change) {
         //noinspection unchecked
         T entity = (T) cache.getIfPresent(id);
-        if (entity != null) {
-            entity.applyChange(change);
+        if (entity != null && change instanceof UpdateChange) {
+            ((UpdateChange<T>) change).updateEntityState(entity);
         }
         entityStore.saveChange(id, change);
     }

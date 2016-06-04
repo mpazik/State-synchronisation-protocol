@@ -1,7 +1,7 @@
 package pl.marekpazik.state_synchronisation.reference_implementation.character;
 
 import pl.marekpazik.state_synchronisation.entity.CreationChange;
-import pl.marekpazik.state_synchronisation.entity.EntityType;
+import pl.marekpazik.state_synchronisation.entity.Entity;
 import pl.marekpazik.state_synchronisation.reference_implementation.Position;
 
 public class CharacterCreated implements CreationChange<GameCharacter> {
@@ -16,7 +16,7 @@ public class CharacterCreated implements CreationChange<GameCharacter> {
     }
 
     @Override
-    public EntityType<GameCharacter> getEntityType() {
-        return GameCharacter.entityType;
+    public GameCharacter createEntity(Entity.Id<GameCharacter> entityId) {
+        return new GameCharacter(entityId, new CharacterProperties(name, type), new CharacterState(position));
     }
 }

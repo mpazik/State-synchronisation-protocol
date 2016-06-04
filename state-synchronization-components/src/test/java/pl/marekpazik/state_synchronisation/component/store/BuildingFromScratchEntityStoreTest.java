@@ -8,19 +8,15 @@ import pl.marekpazik.state_synchronisation.reference_implementation.InMemoryChan
 import pl.marekpazik.state_synchronisation.reference_implementation.Position;
 import pl.marekpazik.state_synchronisation.reference_implementation.character.GameCharacter;
 import pl.marekpazik.state_synchronisation.reference_implementation.character.CharacterCreated;
-import pl.marekpazik.state_synchronisation.reference_implementation.character.CharacterFactory;
 import pl.marekpazik.state_synchronisation.reference_implementation.id.LongIdGenerator;
 
 public class BuildingFromScratchEntityStoreTest extends EntityStoreTest<GameCharacter> {
     private final ChangesStore changesStore = new InMemoryChangesStore();
     private final LongIdGenerator longIdGenerator = new LongIdGenerator();
-    private final EntityFactoryRegistry entityFactoryRegistry = EntityFactoryRegistry.builder()
-            .addEntityFactory(GameCharacter.entityType, new CharacterFactory(longIdGenerator))
-            .build();
 
     @Override
     protected EntityStore createSut() {
-        return new BuildingFromChangesEntityStore(entityFactoryRegistry, changesStore);
+        return new BuildingFromChangesEntityStore(changesStore);
     }
 
     @Override

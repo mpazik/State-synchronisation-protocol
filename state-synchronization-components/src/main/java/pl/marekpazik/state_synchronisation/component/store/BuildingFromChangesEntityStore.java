@@ -2,8 +2,6 @@ package pl.marekpazik.state_synchronisation.component.store;
 
 import pl.marekpazik.state_synchronisation.Change;
 import pl.marekpazik.state_synchronisation.ChangesStore;
-import pl.marekpazik.state_synchronisation.entity.EntityFactory;
-import pl.marekpazik.state_synchronisation.entity.EntityType;
 import pl.marekpazik.state_synchronisation.entity.Changes;
 import pl.marekpazik.state_synchronisation.entity.Entity;
 import pl.marekpazik.state_synchronisation.entity.EntityStore;
@@ -13,21 +11,17 @@ import pl.marekpazik.state_synchronisation.entity.EntityStore;
  * @see ChangesStore#saveChange(Entity.Id, Change) ChangesStore#saveChange
  */
 public final class BuildingFromChangesEntityStore implements EntityStore {
-    private final EntityFactoryRegistry entityFactoryRegistry;
     private final ChangesStore changesStore;
 
-    public BuildingFromChangesEntityStore(EntityFactoryRegistry entityFactoryRegistry, ChangesStore changesStore) {
-        this.entityFactoryRegistry = entityFactoryRegistry;
+    public BuildingFromChangesEntityStore(ChangesStore changesStore) {
         this.changesStore = changesStore;
     }
 
     @Override
     public <T extends Entity<T>> T getEntity(Entity.Id<T> id) {
         Changes<T> changes = changesStore.getAllChanges(id);
-        EntityType<T> entityType = changes.getCreationChange().getEntityType();
-        EntityFactory<T> entityFactory = entityFactoryRegistry.get(entityType);
-        T entity = entityFactory.createEntity(changes.getCreationChange());
-        changes.getChanges().forEach(entity::applyChange);
+        T entity = changes.getCreationChange().createEntity(id);
+        changes.getUpdateChanges().forEach(change -> change.updateEntityState(entity));
         return entity;
     }
 
