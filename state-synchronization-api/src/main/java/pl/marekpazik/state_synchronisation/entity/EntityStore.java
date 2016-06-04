@@ -1,7 +1,7 @@
 package pl.marekpazik.state_synchronisation.entity;
 
 import pl.marekpazik.state_synchronisation.Change;
-import pl.marekpazik.state_synchronisation.entity.Entity.Id;
+import pl.marekpazik.state_synchronisation.common.Id;
 
 /**
  * Store that returns entity with the latest state for the given {@link Id}

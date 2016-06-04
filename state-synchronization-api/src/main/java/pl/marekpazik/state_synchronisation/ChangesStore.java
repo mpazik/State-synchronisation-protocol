@@ -2,7 +2,7 @@ package pl.marekpazik.state_synchronisation;
 
 import pl.marekpazik.state_synchronisation.entity.Changes;
 import pl.marekpazik.state_synchronisation.entity.Entity;
-import pl.marekpazik.state_synchronisation.entity.Entity.Id;
+import pl.marekpazik.state_synchronisation.common.Id;
 
 public interface ChangesStore {
 

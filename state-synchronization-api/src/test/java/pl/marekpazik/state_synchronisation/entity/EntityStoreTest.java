@@ -2,6 +2,7 @@ package pl.marekpazik.state_synchronisation.entity;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.marekpazik.state_synchronisation.common.Id;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.ThrowableAssert.catchThrowable;
@@ -16,7 +17,7 @@ public abstract class EntityStoreTest<E extends Entity<E>> {
 
     @Test
     public void getEntity_ifExists_returnsIt() {
-        Entity.Id<E> id = generateId();
+        Id<E> id = generateId();
         CreationChange<E> creationChange = getCreationChange();
         entityStore.saveChange(id, creationChange);
 
@@ -35,7 +36,7 @@ public abstract class EntityStoreTest<E extends Entity<E>> {
 
     protected abstract EntityStore createSut();
 
-    protected abstract Entity.Id<E> generateId();
+    protected abstract Id<E> generateId();
 
     protected abstract CreationChange<E> getCreationChange();
 

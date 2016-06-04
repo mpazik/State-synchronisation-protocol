@@ -1,10 +1,10 @@
 package pl.marekpazik.state_synchronisation.reference_implementation.id;
 
-import pl.marekpazik.state_synchronisation.entity.Entity;
+import pl.marekpazik.state_synchronisation.common.Id;
 
 import java.util.Objects;
 
-public class LongId<E extends Entity<E>> implements Entity.Id<E> {
+public class LongId<T> implements Id<T> {
     private final long id;
 
     public LongId(long id) {

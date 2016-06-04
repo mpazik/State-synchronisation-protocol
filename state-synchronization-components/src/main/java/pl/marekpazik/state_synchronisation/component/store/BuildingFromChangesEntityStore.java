@@ -2,13 +2,14 @@ package pl.marekpazik.state_synchronisation.component.store;
 
 import pl.marekpazik.state_synchronisation.Change;
 import pl.marekpazik.state_synchronisation.ChangesStore;
+import pl.marekpazik.state_synchronisation.common.Id;
 import pl.marekpazik.state_synchronisation.entity.Changes;
 import pl.marekpazik.state_synchronisation.entity.Entity;
 import pl.marekpazik.state_synchronisation.entity.EntityStore;
 
 /**
  * Entity store that base on {@link Changes}. All saved changes are saved in the {@link ChangesStore}.
- * @see ChangesStore#saveChange(Entity.Id, Change) ChangesStore#saveChange
+ * @see ChangesStore#saveChange(Id, Change) ChangesStore#saveChange
  */
 public final class BuildingFromChangesEntityStore implements EntityStore {
     private final ChangesStore changesStore;
@@ -18,7 +19,7 @@ public final class BuildingFromChangesEntityStore implements EntityStore {
     }
 
     @Override
-    public <E extends Entity<E>> E getEntity(Entity.Id<E> id) {
+    public <E extends Entity<E>> E getEntity(Id<E> id) {
         Changes<E> changes = changesStore.getAllChanges(id);
         E entity = changes.getCreationChange().createEntity(id);
         changes.getUpdateChanges().forEach(change -> change.updateEntityState(entity));
@@ -26,7 +27,7 @@ public final class BuildingFromChangesEntityStore implements EntityStore {
     }
 
     @Override
-    public <E extends Entity<E>> void saveChange(Entity.Id<E> id, Change<E> change) {
+    public <E extends Entity<E>> void saveChange(Id<E> id, Change<E> change) {
         changesStore.saveChange(id, change);
     }
 }

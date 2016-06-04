@@ -3,6 +3,7 @@ package pl.marekpazik.state_synchronisation;
 import com.google.common.collect.ImmutableList;
 import org.junit.Before;
 import org.junit.Test;
+import pl.marekpazik.state_synchronisation.common.Id;
 import pl.marekpazik.state_synchronisation.entity.Changes;
 import pl.marekpazik.state_synchronisation.entity.CreationChange;
 import pl.marekpazik.state_synchronisation.entity.Entity;
@@ -22,7 +23,7 @@ public abstract class ChangesStoreTest<E extends Entity<E>> {
 
     @Test
     public void getAllChanges_returnsAllChangesInOrder() {
-        Entity.Id<E> id = generateId();
+        Id<E> id = generateId();
         CreationChange<E> creationChange = getCreationChange();
         Change<E> change = getChange();
         changesStore.saveChange(id, creationChange);
@@ -49,7 +50,7 @@ public abstract class ChangesStoreTest<E extends Entity<E>> {
     @Test
     public void getAllChanges_anyCreatingChangeIsNotFirst_throwsExceptionAtSomePoint() {
         Throwable thrown = catchThrowable(() -> {
-            Entity.Id<E> id = generateId();
+            Id<E> id = generateId();
             changesStore.saveChange(id, getChange());
             Changes<E> changes = changesStore.getAllChanges(id);
             changes.getCreationChange();
@@ -58,7 +59,7 @@ public abstract class ChangesStoreTest<E extends Entity<E>> {
         assertThat(thrown).isNotNull();
     }
 
-    protected abstract Entity.Id<E> generateId();
+    protected abstract Id<E> generateId();
 
     protected abstract ChangesStore createSut();
 

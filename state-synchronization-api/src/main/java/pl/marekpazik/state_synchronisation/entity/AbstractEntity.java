@@ -1,6 +1,7 @@
 package pl.marekpazik.state_synchronisation.entity;
 
 import pl.marekpazik.state_synchronisation.Version;
+import pl.marekpazik.state_synchronisation.common.Id;
 
 public abstract class AbstractEntity<
         E extends Entity<E>,

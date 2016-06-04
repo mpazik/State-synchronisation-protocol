@@ -1,5 +1,6 @@
 package pl.marekpazik.state_synchronisation.reference_implementation.world;
 
+import pl.marekpazik.state_synchronisation.common.Id;
 import pl.marekpazik.state_synchronisation.entity.AbstractEntity;
 import pl.marekpazik.state_synchronisation.entity.EntityType;
 import pl.marekpazik.state_synchronisation.reference_implementation.StringEntityType;
