@@ -1,4 +1,4 @@
-# State synchronization protocol
+# State synchronization protocol - Experiment
 
 ## About
 A project that is trying to help solve the problem with state synchronization between client and distributed server.
